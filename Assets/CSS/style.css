@@ -3,6 +3,7 @@
     --theme-color-gray: #F0F0F0;
     --theme-color-black: black;
     --button-border-radius: 10px;
+    --hover-color: rgb(8, 54, 8);
 }
 
 * {
@@ -63,8 +64,12 @@ h2 {
     justify-content: center;
     border-radius: var(--button-border-radius);
     padding: 10px;
-    align-self:center;
+    align-self: center;
     color: var(--theme-color-green);
+}
+
+#startQuizButton:hover {
+    background-color: var(--hover-color)
 }
 
 #codingQuizQuestion1 {
@@ -74,12 +79,14 @@ h2 {
     width: 100%;
 }
 
-.orderedList {
+.unorderedList {
     justify-content: center;
     text-align: center;
+    font-size: 18px;
 }
 
-ol li {
+
+.answerChoiceButton {
     border: solid;
     border-color: var(--theme-color-black);
     border-width: 1px;
@@ -89,6 +96,86 @@ ol li {
     margin-left: 45%;
     margin-right: 45%;
     background-color: var(--theme-color-gray);
+    color: var(--theme-color-green);
+}
+
+.answerChoiceButton:hover {
+    background-color: var(--hover-color)
+}
+
+/*how to make buttons work?*/
+#finalScoreOutput {
+    align-self: center;
+    margin: 15px;
+    font-size: 23px;
+    text-align: center;
+    font-weight: 300;
+}
+
+#highScoreInitials {
+    align-self: center;
+    margin: 15px;
+    font-size: 23px;
+    text-align: center;
+    font-weight: 300;
+}
+
+#submitButton {
+    margin-left: 10px;
     color: var(--theme-color-green)
 }
 
+#submitButton:hover {
+    background-color: var(--hover-color);
+}
+
+/*this is for second html*/
+#html2Section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+body > section > h1 {
+    font-size: 50px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin: 50px;
+}
+
+#goBackButton {
+    border: solid;
+    border-color: var(--theme-color-black);
+    border-width: 1px;
+    border-radius: var(--button-border-radius);
+    margin: 10px;
+    padding: 5px;
+    margin-left: 45%;
+    margin-right: 45%;
+    background-color: var(--theme-color-gray);
+    color: var(--theme-color-green);
+    width: 100%;
+}
+
+#goBackButton:hover {
+    background-color: var(--hover-color)
+}
+
+#clearHighScoresButton {
+    border: solid;
+    border-color: var(--theme-color-black);
+    border-width: 1px;
+    border-radius: var(--button-border-radius);
+    margin: 10px;
+    padding: 5px;
+    margin-left: 45%;
+    margin-right: 45%;
+    background-color: var(--theme-color-gray);
+    color: var(--theme-color-green);
+    width: 100%;
+}
+
+#clearHighScoresButton:hover {
+    background-color: var(--hover-color)
+}
