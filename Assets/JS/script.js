@@ -3,6 +3,7 @@ var secondsLeft = 100;
 var quizQuestions = document.getElementById("quizQuestions");
 var startQuizButton = document.getElementById("startQuizButton");
 var intro = document.getElementById("codingQuizIntro");
+var introContainer = document.getElementById("introContainer")
 
 
 function setTime() {
@@ -21,7 +22,7 @@ function setTime() {
 
 var codingQuiz = function() {
 //make the function for the coding quiz to start here
-intro.classList.add('hide');
+introContainer.classList.add('hide');
 
 setTime();
 }
