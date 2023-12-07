@@ -72,6 +72,10 @@ h2 {
     background-color: var(--hover-color)
 }
 
+.hide {
+    display: none;
+}
+
 #codingQuizQuestion1 {
     display: flex;
     flex-wrap: wrap;
