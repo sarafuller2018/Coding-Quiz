@@ -1,5 +1,5 @@
 var timer = document.getElementById("timerCount");
-var secondsLeft = 100;
+var secondsLeft = 50;
 var quizQuestions = document.getElementById("quizQuestions");
 var startQuizButton = document.getElementById("startQuizButton");
 var intro = document.getElementById("codingQuizIntro");
@@ -9,6 +9,7 @@ var answerOptionsEl = document.querySelectorAll(".answerOptions");
 var currentQuestion = 0;
 var score = 0;
 var answerAlertEl = document.getElementById("answerAlert");
+var allDoneContainerEl = document.getElementById("allDoneContainer");
 
 function setTime() {
   // Sets interval in variable
@@ -16,9 +17,11 @@ function setTime() {
     secondsLeft--;
     timer.textContent = "Timer: " + secondsLeft;
 
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
+      quizQuestions.classList.add('hide');
+      allDoneContainerEl.classList.remove('hide');
     }
 
   }, 1000);
@@ -61,7 +64,7 @@ var questionsArray = [{
   Answers: ["JavaScript", "terminal/bash", "for loops", "console.log"],
   Correct: 3
 }]
-console.log(questions);
+console.log(questionsArray);
 
 var renderQuizQuestions = function () {
   questionsEl.textContent = questionsArray[currentQuestion].Question;
@@ -84,23 +87,17 @@ var checkAnswer = function (event) {
     secondsLeft -= 10; //secondsLeft = secondsLeft - 10
   }
 
-  if (secondsLeft == 0) {
-    //take user to game over section
-  }
-  
-  
   if (currentQuestion < questionsArray.length) {
     currentQuestion++;
     renderQuizQuestions();
   } else {
-
+    //???
   }
 }
+
 
 startQuizButton.addEventListener("click", codingQuiz);
 
 for (i = 0; i < answerOptionsEl.length; i++) {
   answerOptionsEl[i].addEventListener("click", checkAnswer)
 }
-
-questionsArray.style("color pink")
