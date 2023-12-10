@@ -10,6 +10,9 @@ var currentQuestion = 0;
 var score = 0;
 var answerAlertEl = document.getElementById("answerAlert");
 var allDoneContainerEl = document.getElementById("allDoneContainer");
+var finalScoreSpan = document.getElementById("finalScore");
+var initialsSubmitButton = document.getElementById("submitButton");
+var initialsEl = document.getElementById("initials");
 
 function setTime() {
   // Sets interval in variable
@@ -17,12 +20,14 @@ function setTime() {
     secondsLeft--;
     timer.textContent = "Timer: " + secondsLeft;
 
-    if (secondsLeft <= 0) {
+    if (secondsLeft <= 0 || currentQuestion == questionsArray.length) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       quizQuestions.classList.add('hide');
       allDoneContainerEl.classList.remove('hide');
     }
+
+    finalScoreSpan.textContent = secondsLeft;
 
   }, 1000);
 }
@@ -67,12 +72,17 @@ var questionsArray = [{
 console.log(questionsArray);
 
 var renderQuizQuestions = function () {
-  questionsEl.textContent = questionsArray[currentQuestion].Question;
-
-  for (i = 0; i < questionsArray[currentQuestion].Answers.length; i++) {
-    answerOptionsEl[i].textContent = questionsArray[currentQuestion].Answers[i]
+  if (currentQuestion < questionsArray.length) {
+    for (i = 0; i < questionsArray[currentQuestion].Answers.length; i++) {
+      questionsEl.textContent = questionsArray[currentQuestion].Question;
+      answerOptionsEl[i].textContent = questionsArray[currentQuestion].Answers[i];
+    }
+  } else {
+    // alert("Quiz done");
+    quizQuestions.classList.add('hide');
+    allDoneContainerEl.classList.remove('hide');
   }
-}
+};
 
 var checkAnswer = function (event) {
   event.preventDefault()
@@ -90,14 +100,26 @@ var checkAnswer = function (event) {
   if (currentQuestion < questionsArray.length) {
     currentQuestion++;
     renderQuizQuestions();
-  } else {
-    //???
   }
 }
-
 
 startQuizButton.addEventListener("click", codingQuiz);
 
 for (i = 0; i < answerOptionsEl.length; i++) {
   answerOptionsEl[i].addEventListener("click", checkAnswer)
 }
+
+
+initialsSubmitButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var highScoreInfo = {
+    initials: initialsEl.value.trim(),
+    highScore: secondsLeft
+  };
+
+  localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo));
+  console.log("highScoreInfo");
+});
+
+
