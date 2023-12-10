@@ -7,28 +7,27 @@ function renderMessage() {
     }
 }
 
-renderMessage();
-
-function saveScore(scoreData) {
-    var highScores = JSON.parse(localStorage.getItem("highScoreInfo")) || [];
+function saveScore() {
+    var highScores = [];
+    var scoreData = JSON.parse(localStorage.getItem("highScoreInfo"));
     highScores.push(scoreData);
     localStorage.setItem("highScores", JSON.stringify(highScores));
-    }
-        
+    console.log(highScores);
+};
+
 function renderScores() {
-    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-    highScores.forEach(function(scoreData) {
+    highScores.forEach(function (scoreData) {
         var scoreElement = document.createElement("p");
-        scoreElement.textContent = scoreData.initials + " - " + scoreData.highscore;
+        scoreElement.textContent = scoreData.initials + " - " + scoreData.highScore;
         console.log(scoreElement);
         document.getElementById("highScores").appendChild(scoreElement);
-    });
-
+    })
 }
 
 function init() {
     saveScore();
     renderScores();
+    renderMessage();
 }
 
 init();
