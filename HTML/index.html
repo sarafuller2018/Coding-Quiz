@@ -23,9 +23,17 @@
             <button id="startQuizButton">Start Quiz</button>
         </section></div>
 
-        <section id = "quizQuestions">
-            
+        <section id = "quizQuestions" class = "hide">
+            <h3 id = "questions"></h3>
+            <div id = "answersDiv">
+                <button data-value="0" class="answerOptions"></button>
+                <button data-value="1" class="answerOptions"></button>
+                <button data-value="2" class="answerOptions"></button>
+                <button data-value="3" class="answerOptions"></button>
+            </div>
+            <p id = "answerAlert"></p>
         </section>
+        <section><!--hide quiz container and then show this container which will be where they enter intials for hs, when they click button then that will be what is saved to local storage!--></section>
     </main>
 
     <script src="../Assets/JS/script.js"></script>
