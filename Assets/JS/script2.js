@@ -36,13 +36,15 @@ function init() {
 
 
 function clearValues() {
-    alert("Local Storage cleared!");
-    scoreData="";
-    highScores="";
-    document.getElementById("highScores").textContent = "";
-    document.getElementById("highScoreMessage").textContent = "";
-    console.log("scoreData after string clear", scoreData);
-    console.log("highScores after string clear", highScores);
+    var confirmClear = confirm("Are you sure you want to clear high scores?");
+
+    if (confirmClear == true) {
+        localStorage.clear();
+        document.getElementById("highScores").textContent = "";
+        document.getElementById("highScoreMessage").textContent = "";
+    } else {
+        return;
+    }
 };
 
 clearHighScoresButtonEl.addEventListener("click", clearValues);
