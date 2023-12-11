@@ -14,11 +14,14 @@ function saveScore() {
     highScores.push(scoreData);
     localStorage.setItem("highScores", JSON.stringify(highScores));
     console.log(highScores);
+    console.log(scoreData);
 };
 
 function renderScores() {
+    console.log(scoreData);
     highScores.forEach(function (scoreData) {
         var scoreElement = document.createElement("p");
+        console.log(scoreData);
         scoreElement.textContent = scoreData.initials + " - " + scoreData.highScore;
         console.log(scoreElement);
         document.getElementById("highScores").appendChild(scoreElement);
