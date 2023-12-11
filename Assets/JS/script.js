@@ -88,10 +88,10 @@ var checkAnswer = function (event) {
   event.preventDefault()
   var userAnswer = event.target.textContent
   var userSelection = event.target.getAttribute("data-value")
-  console.log(userAnswer, userSelection)
+  console.log(userAnswer, userSelection);
 
   if (userSelection == questionsArray[currentQuestion].Correct) {
-    answerAlertEl.textContent = "Correct!"
+    answerAlertEl.textContent = "Correct!";
   } else {
     answerAlertEl.textContent = "Incorrect!";
     secondsLeft -= 10; //secondsLeft = secondsLeft - 10
