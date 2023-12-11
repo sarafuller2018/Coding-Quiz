@@ -110,7 +110,7 @@ for (i = 0; i < answerOptionsEl.length; i++) {
 }
 
 
-initialsSubmitButton.addEventListener("click", function(event) {
+initialsSubmitButton.addEventListener("click", function (event) {
   // event.preventDefault();
 
   var highScoreInfo = {
