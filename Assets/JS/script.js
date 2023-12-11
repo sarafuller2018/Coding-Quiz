@@ -1,5 +1,5 @@
 var timer = document.getElementById("timerCount");
-var secondsLeft = 50;
+var secondsLeft = 60;
 var quizQuestions = document.getElementById("quizQuestions");
 var startQuizButton = document.getElementById("startQuizButton");
 var intro = document.getElementById("codingQuizIntro");
@@ -95,6 +95,11 @@ var checkAnswer = function (event) {
   } else {
     answerAlertEl.textContent = "Incorrect!";
     secondsLeft -= 10; //secondsLeft = secondsLeft - 10
+  }
+
+  if (secondsLeft <= 0) {
+    quizQuestions.classList.add('hide');
+    allDoneContainerEl.classList.remove('hide');
   }
 
   if (currentQuestion < questionsArray.length) {
