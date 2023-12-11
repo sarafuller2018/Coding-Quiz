@@ -121,5 +121,3 @@ initialsSubmitButton.addEventListener("click", function (event) {
   localStorage.setItem("highScoreInfo", JSON.stringify(highScoreInfo));
   console.log("highScoreInfo");
 });
-
-
