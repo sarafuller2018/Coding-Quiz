@@ -21,25 +21,27 @@ function setTime() {
     timer.textContent = "Timer: " + secondsLeft;
 
     if (secondsLeft <= 0 || currentQuestion == questionsArray.length) {
-      // Stops execution of action at set interval
+      // Stops execution of action at set interval and changes to allDone container
       clearInterval(timerInterval);
       quizQuestions.classList.add('hide');
       allDoneContainerEl.classList.remove('hide');
     }
 
+    // Places secondsLeft as the user's final score on page
     finalScoreSpan.textContent = secondsLeft;
 
   }, 1000);
 }
 
+// Executes when start quiz button is clicked, starts timer and brings up first question
 var codingQuiz = function () {
-  //make the function for the coding quiz to start here
   introContainer.classList.add('hide');
   quizQuestions.classList.remove('hide');
   setTime();
   renderQuizQuestions();
 }
 
+// Array of objects that contain questions, answers, and correct answer
 var questionsArray = [{
   Question: "Commonly used data types do NOT include which of the following?",
   Answers: ["strings", "booleans", "alerts", "numbers"],
@@ -71,6 +73,7 @@ var questionsArray = [{
 }]
 console.log(questionsArray);
 
+// Takes user through each question one by one until the last question is answered
 var renderQuizQuestions = function () {
   if (currentQuestion < questionsArray.length) {
     for (i = 0; i < questionsArray[currentQuestion].Answers.length; i++) {
@@ -78,12 +81,12 @@ var renderQuizQuestions = function () {
       answerOptionsEl[i].textContent = questionsArray[currentQuestion].Answers[i];
     }
   } else {
-    // alert("Quiz done");
     quizQuestions.classList.add('hide');
     allDoneContainerEl.classList.remove('hide');
   }
 };
 
+// Checks answer and notifies if correct or incorrect
 var checkAnswer = function (event) {
   event.preventDefault()
   var userAnswer = event.target.textContent
@@ -97,27 +100,33 @@ var checkAnswer = function (event) {
     secondsLeft -= 10; //secondsLeft = secondsLeft - 10
   }
 
+  if (secondsLeft < 0) {
+    secondsLeft = 0;
+  }
+
+  // Ends quiz when timer reaches 0
   if (secondsLeft <= 0) {
     quizQuestions.classList.add('hide');
     allDoneContainerEl.classList.remove('hide');
   }
 
+  // Increments questions until the last question is reached
   if (currentQuestion < questionsArray.length) {
     currentQuestion++;
     renderQuizQuestions();
   }
 }
 
+// Begins quiz
 startQuizButton.addEventListener("click", codingQuiz);
 
+// Checks answers as user selects answers
 for (i = 0; i < answerOptionsEl.length; i++) {
   answerOptionsEl[i].addEventListener("click", checkAnswer)
 }
 
-
-initialsSubmitButton.addEventListener("click", function (event) {
-  // event.preventDefault();
-
+// Takes initials and score and stores in localStorage
+initialsSubmitButton.addEventListener("click", function () {
   var highScoreInfo = {
     initials: initialsEl.value.trim(),
     highScore: secondsLeft

@@ -1,3 +1,4 @@
+/*Variables used more than once in code*/
 :root {
     --theme-color-green: rgb(92, 168, 126);
     --theme-color-gray: #F0F0F0;
@@ -7,10 +8,12 @@
     --theme-color-darkgray: gray;
 }
 
+/*Universal styling*/
 * {
     font-family: Calibri, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+/*Styles header and makes it a flex container*/
 header {
     display: flex;
     flex-wrap: wrap;
@@ -20,6 +23,7 @@ header {
     padding: 2px;
 }
 
+/*h2 font styling in header*/
 header h2 {
     font-size: 30px;
     justify-content: space-between;
@@ -29,12 +33,14 @@ h1 {
     color: var(--theme-color-green);
 }
 
+/*Styles hyperlinks in 1st HTML*/
 .hyperlink {
     text-decoration: none;
     color: var(--theme-color-green);
     font-weight: 300;
 }
 
+/*Colors the timer count*/
 #timerCount {
     color: var(--theme-color-green);
 }
@@ -189,6 +195,7 @@ body > section > p {
     margin: 10px;
 }
 
+/*Applies styles to button when hovered*/
 #goBackButton:hover {
     background-color: var(--hover-color);
 }
@@ -206,10 +213,12 @@ body > section > p {
     align-self: center;
 }
 
+/*Applies styles to button when hovered*/
 #clearHighScoresButton:hover {
     background-color: var(--hover-color);
 }
 
+/*Styles hyperlink in 2nd HTML*/
 .hyperlink2 {
     text-decoration: none;
     color: var(--theme-color-green);
