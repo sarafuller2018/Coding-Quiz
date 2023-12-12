@@ -1,5 +1,5 @@
 var timer = document.getElementById("timerCount");
-var secondsLeft = 60;
+var secondsLeft = 50;
 var quizQuestions = document.getElementById("quizQuestions");
 var startQuizButton = document.getElementById("startQuizButton");
 var intro = document.getElementById("codingQuizIntro");
@@ -18,17 +18,23 @@ function setTime() {
   // Sets interval in variable
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timer.textContent = "Timer: " + secondsLeft;
+
 
     if (secondsLeft <= 0 || currentQuestion == questionsArray.length) {
       // Stops execution of action at set interval and changes to allDone container
       clearInterval(timerInterval);
       quizQuestions.classList.add('hide');
       allDoneContainerEl.classList.remove('hide');
+
+      if (secondsLeft <= 0) {
+        secondsLeft = 0;
+      }
     }
 
     // Places secondsLeft as the user's final score on page
     finalScoreSpan.textContent = secondsLeft;
+
+    timer.textContent = "Timer: " + secondsLeft;
 
   }, 1000);
 }
@@ -98,10 +104,6 @@ var checkAnswer = function (event) {
   } else {
     answerAlertEl.textContent = "Incorrect!";
     secondsLeft -= 10; //secondsLeft = secondsLeft - 10
-  }
-
-  if (secondsLeft < 0) {
-    secondsLeft = 0;
   }
 
   // Ends quiz when timer reaches 0
